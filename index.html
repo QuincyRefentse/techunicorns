@@ -1,0 +1,601 @@
+Content is user-generated and unverified.
+
+
+Learn about artifacts
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tech Unicorns™ — Innovation. Intellectual Property. Commercialisation.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0E13;
+    --ink-2:#111720;
+    --ink-3:#161d28;
+    --line:#26303d;
+    --line-soft:#1b232e;
+    --gold:#c9a24b;
+    --gold-bright:#e6c876;
+    --rust:#b5602f;
+    --paper:#EDEAE0;
+    --muted:#8994a3;
+    --muted-2:#5c6473;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--gold); color:var(--ink); }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    letter-spacing:-0.01em;
+    color:var(--paper);
+  }
+  a{ color:inherit; text-decoration:none; }
+
+  /* blueprint grid background, used as a texture layer */
+  .grid-bg{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:56px 56px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 40%, transparent 85%);
+    opacity:0.55;
+    pointer-events:none;
+  }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 32px; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(11,14,19,0.82);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:76px;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    font-family:'Fraunces', serif; font-size:19px; letter-spacing:0.01em;
+  }
+  .brand .mark{
+    width:32px; height:32px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; color:var(--gold);
+    position:relative;
+  }
+  .brand .mark::before{
+    content:"";
+    position:absolute; inset:-5px;
+    border:1px dashed var(--line);
+    border-radius:50%;
+  }
+  .brand small{ display:block; font-family:'IBM Plex Mono',monospace; font-size:9.5px; letter-spacing:0.18em; color:var(--muted); margin-top:1px; text-transform:uppercase; font-weight:400;}
+  .navlinks{ display:flex; align-items:center; gap:36px; }
+  .navlinks a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+    color:var(--muted); transition:color .2s;
+  }
+  .navlinks a:hover{ color:var(--gold-bright); }
+  .nav-cta{
+    border:1px solid var(--gold); color:var(--gold) !important;
+    padding:9px 18px; border-radius:2px;
+  }
+  .nav-cta:hover{ background:var(--gold); color:var(--ink) !important; }
+  .navlinks-mobile-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    min-height:100svh;
+    display:flex; flex-direction:column; justify-content:center;
+    padding-top:76px;
+    overflow:hidden;
+  }
+  .hero .wrap{ position:relative; z-index:2; padding-top:60px; padding-bottom:80px;}
+  .hero-eyebrow{ display:flex; align-items:center; gap:14px; margin-bottom:28px; }
+  .hero-eyebrow .rule{ width:44px; height:1px; background:var(--gold); }
+  .hero h1{
+    font-size:clamp(40px, 6.4vw, 84px);
+    line-height:1.02;
+    max-width:15em;
+    font-weight:450;
+  }
+  .hero h1 em{ font-style:italic; color:var(--gold-bright); font-weight:450;}
+  .hero-sub{
+    max-width:560px; margin-top:30px;
+    color:var(--muted); font-size:17px; line-height:1.75;
+  }
+  .hero-actions{ display:flex; gap:18px; margin-top:44px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.06em; text-transform:uppercase;
+    padding:15px 26px; border-radius:2px; display:inline-flex; align-items:center; gap:10px;
+    transition:all .2s;
+  }
+  .btn-primary{ background:var(--gold); color:var(--ink); border:1px solid var(--gold);}
+  .btn-primary:hover{ background:var(--gold-bright); border-color:var(--gold-bright); }
+  .btn-ghost{ border:1px solid var(--line); color:var(--paper); }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold-bright); }
+
+  /* rotating seal */
+  .seal{
+    position:absolute; right:-40px; top:50%; transform:translateY(-50%);
+    width:340px; height:340px; z-index:1; opacity:0.9;
+  }
+  .seal svg{ width:100%; height:100%; }
+  .seal .ring-outer{ animation: spin 90s linear infinite; transform-origin:center; }
+  .seal .ring-inner{ animation: spin-rev 70s linear infinite; transform-origin:center; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  @keyframes spin-rev{ to{ transform:rotate(-360deg); } }
+
+  .hero-foot{
+    display:flex; gap:56px; margin-top:80px; flex-wrap:wrap;
+    border-top:1px solid var(--line-soft); padding-top:26px;
+  }
+  .hero-foot div{ font-family:'IBM Plex Mono', monospace; }
+  .hero-foot .n{ color:var(--gold-bright); font-size:22px; display:block; margin-bottom:4px;}
+  .hero-foot .l{ color:var(--muted-2); font-size:11px; letter-spacing:0.08em; text-transform:uppercase; }
+
+  /* ---------- SECTION HEADS ---------- */
+  section{ position:relative; padding:130px 0; border-bottom:1px solid var(--line-soft); }
+  .sec-head{ max-width:640px; margin-bottom:64px; }
+  .sec-head .eyebrow{ margin-bottom:18px; display:block; }
+  .sec-head h2{ font-size:clamp(30px,4vw,46px); line-height:1.12; }
+  .sec-head p{ color:var(--muted); margin-top:20px; font-size:16px; max-width:52ch;}
+
+  /* ---------- PHILOSOPHY / PIPELINE ---------- */
+  .pipeline-band{ background:var(--ink-2); }
+  .pipeline{
+    display:flex; align-items:stretch; overflow-x:auto; gap:0;
+    margin-top:20px; padding-bottom:10px;
+    scrollbar-width:thin;
+  }
+  .pl-step{
+    flex:0 0 auto; min-width:158px; padding:26px 22px 22px;
+    border-left:1px solid var(--line); position:relative;
+  }
+  .pl-step:first-child{ border-left:none; padding-left:0; }
+  .pl-step .idx{ font-family:'IBM Plex Mono',monospace; color:var(--gold); font-size:12px; }
+  .pl-step h4{ font-size:19px; margin-top:14px; font-weight:450;}
+  .pl-step::after{
+    content:"→";
+    position:absolute; right:-11px; top:26px; color:var(--muted-2); font-size:14px;
+  }
+  .pl-step:last-child::after{ content:""; }
+  .pl-quote{
+    margin-top:56px; font-family:'Fraunces', serif; font-style:italic; font-size:clamp(20px,2.4vw,28px);
+    color:var(--gold-bright); max-width:760px; line-height:1.5; font-weight:450;
+  }
+
+  /* ---------- SECTORS ---------- */
+  .sector-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:1px;
+    background:var(--line-soft); border:1px solid var(--line-soft);
+  }
+  .sector-card{
+    background:var(--ink); padding:40px 38px;
+    position:relative;
+    opacity:0; transform:translateY(18px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .sector-card.in{ opacity:1; transform:translateY(0); }
+  .sector-card .fig{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted-2);
+    letter-spacing:0.1em; text-transform:uppercase; display:block; margin-bottom:22px;
+  }
+  .sector-icon{ width:46px; height:46px; margin-bottom:22px; color:var(--gold); }
+  .sector-icon svg{ width:100%; height:100%; }
+  .sector-card h3{ font-size:22px; margin-bottom:12px; }
+  .sector-card p{ color:var(--muted); font-size:14.5px; line-height:1.7; }
+  .sector-tags{ margin-top:20px; display:flex; flex-wrap:wrap; gap:8px; }
+  .sector-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted-2);
+    border:1px solid var(--line); padding:5px 9px; border-radius:2px;
+  }
+  .sector-card .example{
+    margin-top:22px; padding-top:18px; border-top:1px dashed var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--rust);
+  }
+  .sector-card .example b{ color:var(--gold-bright); font-weight:500; }
+
+  /* ---------- VENTURES ---------- */
+  .venture-list{ display:flex; flex-direction:column; }
+  .venture{
+    display:grid; grid-template-columns:100px 1fr; gap:30px;
+    padding:34px 0; border-top:1px solid var(--line-soft);
+    align-items:baseline;
+  }
+  .venture:last-child{ border-bottom:1px solid var(--line-soft); }
+  .venture .vnum{ font-family:'IBM Plex Mono', monospace; color:var(--gold); font-size:13px; }
+  .venture h3{ font-size:24px; margin-bottom:8px; }
+  .venture p{ color:var(--muted); font-size:15px; max-width:62ch; }
+  .venture .status{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted-2);
+    text-transform:uppercase; letter-spacing:0.08em; margin-top:12px; display:inline-block;
+  }
+
+  /* ---------- IP SECTION ---------- */
+  .ip-section{ background:var(--ink-2); }
+  .ip-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:start; }
+  .ip-statement{ font-family:'Fraunces', serif; font-size:clamp(22px,2.6vw,32px); line-height:1.5; font-weight:450;}
+  .ip-list{ list-style:none; }
+  .ip-list li{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted);
+    padding:14px 0; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between;
+  }
+  .ip-list li:last-child{ border-bottom:1px solid var(--line); }
+  .ip-list li span:last-child{ color:var(--gold-bright); }
+
+  /* ---------- PARTNERSHIPS ---------- */
+  .partner-row{ display:flex; flex-wrap:wrap; gap:14px; margin-top:10px;}
+  .partner-row span{
+    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--paper);
+    border:1px solid var(--line); padding:11px 18px; border-radius:2px;
+  }
+
+  /* ---------- VISION CLOSE ---------- */
+  .vision{ text-align:left; padding-top:150px; padding-bottom:150px; }
+  .vision h2{
+    font-size:clamp(30px,5vw,58px); line-height:1.2; max-width:15ch;
+  }
+  .vision .ambition{
+    margin-top:40px; font-family:'IBM Plex Mono', monospace; letter-spacing:0.06em;
+    color:var(--gold); font-size:13px; text-transform:uppercase;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:80px 0 40px; }
+  .foot-top{
+    display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:40px;
+    padding-bottom:60px; border-bottom:1px solid var(--line-soft);
+  }
+  .foot-top h2{ font-size:clamp(28px,3.6vw,44px); max-width:9ch; }
+  .foot-contact{ display:flex; flex-direction:column; gap:10px; }
+  .foot-contact a{
+    font-family:'IBM Plex Mono', monospace; font-size:15px; color:var(--gold-bright);
+    border-bottom:1px solid transparent;
+  }
+  .foot-contact a:hover{ border-color:var(--gold-bright); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; margin-top:34px; flex-wrap:wrap; gap:14px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted-2); letter-spacing:0.04em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+
+  @media (max-width: 860px){
+    .navlinks{ display:none; }
+    .seal{ display:none; }
+    .ip-grid{ grid-template-columns:1fr; gap:44px; }
+    .sector-grid{ grid-template-columns:1fr; }
+    .venture{ grid-template-columns:1fr; gap:10px; }
+    .foot-top{ flex-direction:column; align-items:flex-start; }
+    section{ padding:90px 0; }
+    .wrap{ padding:0 22px; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--gold-bright); outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">TU</div>
+      <div>
+        Tech Unicorns
+        <small>Est. proprietary IP portfolio</small>
+      </div>
+    </div>
+    <div class="navlinks">
+      <a href="#sectors">Sectors</a>
+      <a href="#ventures">Ventures</a>
+      <a href="#ip">IP</a>
+      <a href="#partnerships">Partnerships</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="grid-bg"></div>
+  <div class="seal" aria-hidden="true">
+    <svg viewBox="0 0 200 200">
+      <g class="ring-outer">
+        <circle cx="100" cy="100" r="94" fill="none" stroke="#26303d" stroke-width="1"/>
+        <circle cx="100" cy="100" r="86" fill="none" stroke="#c9a24b" stroke-width="1" stroke-dasharray="2 6"/>
+      </g>
+      <g class="ring-inner">
+        <circle cx="100" cy="100" r="66" fill="none" stroke="#26303d" stroke-width="1"/>
+      </g>
+      <circle cx="100" cy="100" r="40" fill="none" stroke="#c9a24b" stroke-width="1"/>
+      <text x="100" y="96" text-anchor="middle" fill="#e6c876" font-family="IBM Plex Mono" font-size="13" letter-spacing="2">IP</text>
+      <text x="100" y="112" text-anchor="middle" fill="#8994a3" font-family="IBM Plex Mono" font-size="7" letter-spacing="1">PROTECTED</text>
+    </svg>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-eyebrow">
+      <span class="rule"></span>
+      <span class="eyebrow">Tech Unicorns™</span>
+    </div>
+    <h1>Find a problem.<br>Build a solution.<br><em>Protect the innovation.</em></h1>
+    <p class="hero-sub">
+      An African technology and innovation company that develops practical, scalable
+      solutions across financial services, telecommunications, insurance, mining, rail,
+      agriculture, safety and energy — then converts each one into owned intellectual property.
+    </p>
+    <div class="hero-actions">
+      <a href="#sectors" class="btn btn-primary">View Sectors</a>
+      <a href="#contact" class="btn btn-ghost">Start a Conversation</a>
+    </div>
+
+    <div class="hero-foot">
+      <div><span class="n">8</span><span class="l">Technology Sectors</span></div>
+      <div><span class="n">7</span><span class="l">Named Innovations</span></div>
+      <div><span class="n">01</span><span class="l">Founder — Tshepang Masilo</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PHILOSOPHY / PIPELINE -->
+<section class="pipeline-band">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our Innovation Philosophy</span>
+      <h2>We don't just create ideas. We build intellectual property.</h2>
+    </div>
+    <div class="pipeline">
+      <div class="pl-step"><span class="idx">01</span><h4>Problem</h4></div>
+      <div class="pl-step"><span class="idx">02</span><h4>Idea</h4></div>
+      <div class="pl-step"><span class="idx">03</span><h4>Solution</h4></div>
+      <div class="pl-step"><span class="idx">04</span><h4>IP</h4></div>
+      <div class="pl-step"><span class="idx">05</span><h4>Prototype</h4></div>
+      <div class="pl-step"><span class="idx">06</span><h4>Pilot</h4></div>
+      <div class="pl-step"><span class="idx">07</span><h4>Partnership</h4></div>
+      <div class="pl-step"><span class="idx">08</span><h4>Commercialisation</h4></div>
+    </div>
+    <p class="pl-quote">"An innovative idea becomes significantly more valuable once it can be protected, developed, tested and commercialised."</p>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our Technology Sectors</span>
+      <h2>Eight industries. One method.</h2>
+      <p>Tech Unicorns is not built around a single vertical — the same problem-to-IP process is applied wherever a real-world inefficiency shows up.</p>
+    </div>
+
+    <div class="sector-grid">
+
+      <div class="sector-card">
+        <span class="fig">Fig. I — Fintech &amp; Banking</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="6" y="14" width="36" height="24" rx="1"/><path d="M6 21h36"/><circle cx="34" cy="30" r="3.2"/><path d="M12 14V9a3 3 0 0 1 3-3h11" stroke-dasharray="2 3"/></svg></div>
+        <h3>Fintech &amp; Banking</h3>
+        <p>Digital payments, financial infrastructure, digital wallets, cash digitisation and recurring-payment security built for financial inclusion and resilience.</p>
+        <div class="sector-tags"><span>Digital Wallets</span><span>Cash Digitisation</span><span>Payment Security</span></div>
+        <div class="example">Namebearers: <b>Mzansi Digital Change™ · TFIP™ · SRPS™</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. II — Telecommunications</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 8v10"/><circle cx="24" cy="8" r="2.5"/><path d="M16 22a11 11 0 0 1 16 0" stroke-dasharray="2 3"/><path d="M11 27a17 17 0 0 1 26 0" stroke-dasharray="2 3"/><rect x="17" y="30" width="14" height="10" rx="1"/></svg></div>
+        <h3>Telecommunications</h3>
+        <p>New propositions for telecom operators — data bundles, digital services, AI-driven customer value tools and mobile financial services.</p>
+        <div class="sector-tags"><span>Data Bundles</span><span>Customer Value</span><span>Mobile Finance</span></div>
+        <div class="example">Objective: <b>new revenue &amp; retention layers for operators</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. III — Insurance &amp; Insurtech</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 6l16 6v11c0 10-7 16-16 19-9-3-16-9-16-19V12z"/><path d="M24 18v9" stroke-dasharray="2 3"/><circle cx="24" cy="30" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Insurance &amp; Insurtech</h3>
+        <p>Flexible premium models, roadside and mobility services, and customer-protection technology that rethinks how cover is paid for and delivered.</p>
+        <div class="sector-tags"><span>Payment Flexibility</span><span>Mobility Services</span><span>Customer Protection</span></div>
+        <div class="example">Named venture: <b>FlexQuarter™</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. IV — Mining &amp; Industrial</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="10" y="10" width="12" height="12" rx="1"/><path d="M13 13h6M13 16h6M13 19h6"/><path d="M28 28l10 10M38 28l-10 10" /><circle cx="28" cy="28" r="1.4" fill="currentColor" stroke="none"/><circle cx="38" cy="38" r="1.4" fill="currentColor" stroke="none"/></svg></div>
+        <h3>Mining &amp; Industrial</h3>
+        <p>QR-code asset identification, worker safety systems, equipment tracking and digital inspections that bring visibility to industrial operations.</p>
+        <div class="sector-tags"><span>Asset ID</span><span>Worker Safety</span><span>Digital Inspections</span></div>
+        <div class="example">Goal: <b>connected, data-driven traditional industry</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. V — Rail &amp; Transport</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 34h36"/><path d="M10 34V16h28v18"/><path d="M10 22h28M14 16v-3M20 16v-3M28 16v-3M34 16v-3"/><rect x="20" y="24" width="8" height="8" stroke-dasharray="2 2"/></svg></div>
+        <h3>Rail &amp; Transport</h3>
+        <p>A digital layer across railway infrastructure — QR asset identification, inspection systems, maintenance records and defect reporting.</p>
+        <div class="sector-tags"><span>Asset Traceability</span><span>Inspections</span><span>Digital Workflows</span></div>
+        <div class="example">Focus: <b>Freight Digital Identity Layer</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. VI — Smart Agriculture</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M14 30c0-8 4-14 10-14s10 6 10 14" /><path d="M14 30h20v4a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4z"/><circle cx="24" cy="14" r="6" stroke-dasharray="2 2"/></svg></div>
+        <h3>Smart Agriculture &amp; Livestock</h3>
+        <p>Livestock identification, geofencing, movement alerts and health records that give farmers real-time visibility over their herds.</p>
+        <div class="sector-tags"><span>Geofencing</span><span>Herd Management</span><span>Health Alerts</span></div>
+        <div class="example">Named venture: <b>LivestockPulse™</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. VII — Safety &amp; Smart Infrastructure</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M24 6l16 6v10c0 10-7 17-16 20-9-3-16-10-16-20V12z"/><path d="M24 20v8M24 32v.1" stroke-width="1.6"/></svg></div>
+        <h3>Safety &amp; Smart Infrastructure</h3>
+        <p>Emergency reporting, visibility technology and smart safety equipment for public, industrial and outdoor environments.</p>
+        <div class="sector-tags"><span>Emergency Reporting</span><span>Visibility Tech</span><span>Public Safety</span></div>
+        <div class="example">Named venture: <b>ReflectaCamp™</b></div>
+      </div>
+
+      <div class="sector-card">
+        <span class="fig">Fig. VIII — Energy &amp; Sustainability</span>
+        <div class="sector-icon"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="24" cy="24" r="8"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4M13 13l3 3M32 32l3 3M13 35l3-3M32 16l3-3" stroke-dasharray="1 3"/></svg></div>
+        <h3>Energy &amp; Sustainability</h3>
+        <p>Energy resilience, thermal management and sustainable infrastructure — making everyday products more efficient and environmentally resilient.</p>
+        <div class="sector-tags"><span>Energy Resilience</span><span>Thermal Mgmt</span><span>Efficiency</span></div>
+        <div class="example">Focus: <b>resilient, practical infrastructure</b></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- VENTURES -->
+<section id="ventures">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Selected Ventures</span>
+      <h2>From proposal to portfolio.</h2>
+      <p>A sample of the individual innovations moving through the Tech Unicorns pipeline right now.</p>
+    </div>
+    <div class="venture-list">
+      <div class="venture">
+        <span class="vnum">V.01</span>
+        <div>
+          <h3>RestAlert AI</h3>
+          <p>A driver fatigue management platform, developed and submitted as a formal proposal to Hollard Insurance.</p>
+          <span class="status">Proposal Submitted — Insurance</span>
+        </div>
+      </div>
+      <div class="venture">
+        <span class="vnum">V.02</span>
+        <div>
+          <h3>GroupPay Funeral Cover™</h3>
+          <p>A collaborative, multi-contributor premium payment platform that lets a family or group jointly fund a funeral insurance policy.</p>
+          <span class="status">In Development — Fintech / Insurance</span>
+        </div>
+      </div>
+      <div class="venture">
+        <span class="vnum">V.03</span>
+        <div>
+          <h3>QR-Based Freight Asset Tracking</h3>
+          <p>A Freight Digital Identity Layer for maintenance verification, proposed to Transnet across its rail and freight network.</p>
+          <span class="status">Proposal Submitted — Rail</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IP -->
+<section id="ip" class="ip-section">
+  <div class="wrap">
+    <div class="ip-grid">
+      <div>
+        <span class="eyebrow">Intellectual Property</span>
+        <p class="ip-statement" style="margin-top:22px;">Intellectual property is central to the Tech Unicorns strategy. Where applicable, innovations in the portfolio are owned by Tshepang Masilo and Tech Unicorns, subject to each innovation's own ownership arrangement.</p>
+      </div>
+      <ul class="ip-list">
+        <li><span>IP Ownership</span><span>Retained</span></li>
+        <li><span>Licensing</span><span>Available</span></li>
+        <li><span>Strategic Partnerships</span><span>Open</span></li>
+        <li><span>Joint Ventures</span><span>Open</span></li>
+        <li><span>Co-Development</span><span>Open</span></li>
+        <li><span>Technology Pilots</span><span>Active</span></li>
+        <li><span>Manufacturing Partnerships</span><span>Open</span></li>
+        <li><span>Commercial Agreements</span><span>Open</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIPS -->
+<section id="partnerships">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Our Approach to Partnerships</span>
+      <h2>Tech Unicorns doesn't have to build every solution alone.</h2>
+      <p>We partner with organisations that already have customers, infrastructure, distribution, manufacturing capability, technical expertise, and regulatory experience.</p>
+    </div>
+    <div class="partner-row">
+      <span>Banks</span><span>Insurers</span><span>Telecommunications Companies</span><span>Mining Groups</span>
+      <span>Railway Organisations</span><span>Agricultural Businesses</span><span>Technology Companies</span>
+      <span>Manufacturers</span><span>Government Institutions</span><span>Research Organisations</span>
+    </div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision">
+  <div class="wrap">
+    <span class="eyebrow">Our Vision</span>
+    <h2 style="margin-top:22px;">A globally recognised African technology company, built on a portfolio of protected innovation.</h2>
+    <p style="color:var(--muted); margin-top:24px; max-width:56ch; font-size:16.5px;">
+      We want to show that African innovators can build technology that solves African
+      problems — while carrying real potential in international markets.
+    </p>
+    <div class="ambition">Innovate → Protect → Build → Partner → Commercialise</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-top">
+      <h2>Let's build the next Fig. IX.</h2>
+      <div class="foot-contact">
+        <span class="eyebrow" style="margin-bottom:2px;">Get in touch</span>
+        <a href="mailto:tshepang.techunicorns@outlook.com">tshepang.techunicorns@outlook.com</a>
+        <a href="tel:+27815755772">081 575 5772</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>Tech Unicorns™ — Innovation. Intellectual Property. Commercialisation.</span>
+      <span>Founder: Tshepang Masilo</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // reveal sector cards on scroll
+  const cards = document.querySelectorAll('.sector-card');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.15 });
+  cards.forEach(c=>io.observe(c));
+</script>
+
+</body>
+</html>
